@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Dentist.Tools.Settings
+namespace Game.Dentist.Tools
 {
 	[CreateAssetMenu(fileName ="DentistTool", menuName ="Game/Dentist/DentistTool")]
 	public class DentistToolSetting : ScriptableObject

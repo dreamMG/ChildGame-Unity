@@ -1,26 +1,49 @@
-﻿//Subclass Sandbox pattern :*
-
+﻿using Game.Backend;
 using UnityEngine;
 
 namespace Game.Dentist.Tools
 {
-	public abstract class DentistTool
+	public abstract class DentistTool : MonoBehaviour, IMoveable, IBackToStartPosition
 	{
-        public abstract void Activate();
+        [SerializeField] private DentistToolSetting setting;
+        [SerializeField] private ParticleSystem particle;
 
-        protected void Move(float speed)
-        {
-            Debug.Log("Moving with speed " + speed);
+        [Zenject.Inject] private AudioManager audioManager;
+
+        private Vector2 startPos;
+
+		private void Awake()
+		{
+            startPos = transform.position;
         }
 
-        protected void PlaySound(string coolSound)
+		public abstract void Activate();
+
+		public abstract void Stop();
+
+        public void Move(Vector2 pos)
         {
-            Debug.Log("Playing sound " + coolSound);
+            transform.position = pos;
+        }
+
+        public void BackToStartPos()
+		{
+            transform.position = startPos;
+        }
+
+        protected void PlaySound()
+        {
+            audioManager.PlayClip(setting.AudioClips[Random.Range(0, setting.AudioClips.Length)]);
         }
 
         protected void SpawnParticles()
         {
-
+            particle.Play();
         }
-    }
+
+        protected void StopParticles()
+		{
+            particle.Stop();
+		}
+	}
 }
