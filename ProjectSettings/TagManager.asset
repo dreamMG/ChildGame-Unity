@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ship
-  - asteroid
+  - Scraps
+  - Deck
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ namespace Game.Input
 		private IMoveable moveable;
 
 		public Vector2 InputPos => inputActions.Player.InputPosition.ReadValue<Vector2>();
+		public IMoveable Moveable { get => moveable; set => moveable = value; }
 
 		private void OnEnable()
 		{
@@ -44,12 +45,12 @@ namespace Game.Input
 
 		private void RemoveRaycaster(InputAction.CallbackContext callbackContext)
 		{
-			if (this.moveable is IBackToStartPosition back)
+			if (moveable is IBackToStartPosition back)
 			{
 				back.BackToStartPos();
 			}
 
-			this.moveable = null;
+			moveable = null;
 		}
 
 		private IEnumerator StartMove()

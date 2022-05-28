@@ -6,6 +6,8 @@ namespace Game.Backend
 {
 	public class BackendInstaller : MonoInstaller
 	{
+		[Header("Input")]
+		[SerializeField] private InputGlobal inputGlobal;
 		[Header("Audio")]
 		[SerializeField] private AudioSource audioEffect;
 		[Header("Cameras")]
@@ -20,6 +22,7 @@ namespace Game.Backend
 
 		private void InstallInput()
 		{
+			Container.Bind<InputGlobal>().FromInstance(inputGlobal).AsSingle();
 			Container.Bind<InputMaster>().AsSingle();
 		}
 

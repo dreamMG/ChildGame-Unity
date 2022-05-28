@@ -6,7 +6,9 @@ namespace Game.Dentist.Tools
 	public class DentistToolSetting : ScriptableObject
 	{
 		[SerializeField] private AudioClip[] audioClips;
+		[SerializeField] private Sprite sprite;
 
 		public AudioClip[] AudioClips => audioClips;
+		public Sprite Sprite => sprite;
 	}
 }

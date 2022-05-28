@@ -1,4 +1,5 @@
 ﻿using Game.Backend;
+using Game.Input;
 using UnityEngine;
 
 namespace Game.Dentist.Tools
@@ -9,10 +10,15 @@ namespace Game.Dentist.Tools
         [SerializeField] private ParticleSystem particle;
 
         [Zenject.Inject] private AudioManager audioManager;
+        [Zenject.Inject] private InputGlobal inputGlobal;
+        [Zenject.Inject] protected DentistManager dentistManager;
 
         private Vector2 startPos;
+        
+        public bool CanUse { get; set; }
+        public Sprite Sprite => setting.Sprite;
 
-		private void Awake()
+        private void Awake()
 		{
             startPos = transform.position;
         }
@@ -28,6 +34,7 @@ namespace Game.Dentist.Tools
 
         public void BackToStartPos()
 		{
+            inputGlobal.Moveable = null;
             transform.position = startPos;
         }
 
