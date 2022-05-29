@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Game.Input
 {
-	public class InputGlobal : MonoBehaviour
+	public class InputDenstist : MonoBehaviour
 	{
 		[Zenject.Inject] private InputMaster inputActions;
 

@@ -25,6 +25,7 @@ namespace Game.Dentist.Tools
 			{
 				yellownessDamage.Active = false;
 				yellownessDamage.SpriteRenderer.color = Color.white;
+				yellownessDamage.Complete();
 			}
 		}
 

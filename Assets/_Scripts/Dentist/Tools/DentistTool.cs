@@ -10,7 +10,7 @@ namespace Game.Dentist.Tools
         [SerializeField] private ParticleSystem particle;
 
         [Zenject.Inject] private AudioManager audioManager;
-        [Zenject.Inject] private InputGlobal inputGlobal;
+        [Zenject.Inject] private InputDenstist inputGlobal;
         [Zenject.Inject] protected DentistManager dentistManager;
 
         private Vector2 startPos;

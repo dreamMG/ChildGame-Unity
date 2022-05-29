@@ -163,7 +163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 27004422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae90659100184cd4291f659ebf1f3aad, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e5cacb39a0b43749a643f66c879292b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &54084608
@@ -2041,7 +2041,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.9433962, g: 0.29814878, b: 0.4367746, a: 1}
   m_FlipX: 0
@@ -2376,7 +2376,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04230857, y: 0.9228537}
+  m_Offset: {x: 0.04230857, y: 1.3268392}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2387,7 +2387,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.58749247, y: 1.4177966}
+  m_Size: {x: 0.58749247, y: 0.6098256}
   m_EdgeRadius: 0
 --- !u!114 &764007324
 MonoBehaviour:
@@ -2619,7 +2619,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -7584,7 +7584,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0.9433962, g: 0.7744898, b: 0.5206479, a: 1}
   m_FlipX: 0
@@ -12570,7 +12570,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1703587623
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: f082b1cddbb4a9e4daea2fc5500545ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13142,7 +13142,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -5177388603050735206, guid: cc35afd292fc349128b36a291fb3a165, type: 3}
   m_Color: {r: 1, g: 0.41037738, b: 0.41037738, a: 1}
   m_FlipX: 0
@@ -13886,10 +13886,6 @@ PrefabInstance:
     - target: {fileID: 6929040453500935200, guid: d26d37d6c4fd67648bc96c9432a429ea, type: 3}
       propertyPath: m_Name
       value: Tooth
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929040453500935206, guid: d26d37d6c4fd67648bc96c9432a429ea, type: 3}
-      propertyPath: m_SortingOrder
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6929040453500935207, guid: d26d37d6c4fd67648bc96c9432a429ea, type: 3}
       propertyPath: m_RootOrder

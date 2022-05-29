@@ -2,6 +2,7 @@
 using Game.Dentist.Tools;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.Dentist
@@ -19,7 +20,7 @@ namespace Game.Dentist
 		private List<DentistTool> dentistToolsToMission;
 		private DenstistMission currentMission;
 
-		private void Awake()
+		private void Start()
 		{
 			dentistToolsToMission = new List<DentistTool>() { tweezers, brush, drill };
 
@@ -36,6 +37,7 @@ namespace Game.Dentist
 		{
 			if(dentistToolsToMission.Count == 1)
 			{
+				SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
 				return;
 			}
 

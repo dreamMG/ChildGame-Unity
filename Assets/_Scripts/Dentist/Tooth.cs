@@ -1,5 +1,4 @@
 using Game.Dentist.Damage;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Dentist

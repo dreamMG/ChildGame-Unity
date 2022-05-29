@@ -21,6 +21,7 @@ namespace Game.Dentist.Damage
 		public override void Complete()
 		{
 			Active = false;
+			onComplete.Invoke();
 		}
 	}
 }

@@ -2,7 +2,6 @@
 using Game.Dentist.Damage;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Game.Dentist
 {
@@ -33,12 +32,13 @@ namespace Game.Dentist
 				toothDamages = teethDamagesContainer.ToothDamagesContainers.Where(x => x.CavitiesDamage.Active).Select(x => (ToothDamage)x.CavitiesDamage).ToList();
 				necessaryProgress = toothDamages.Count;
 			}
+
+			toothDamages?.ForEach(x => x.onActive?.Invoke());
 		}
 
 		public void GetProgress()
 		{
 			currentProgress = toothDamages.Where(x => !x.Active).ToList().Count;
-			Debug.Log(currentProgress);
 		}
 	}
 }
