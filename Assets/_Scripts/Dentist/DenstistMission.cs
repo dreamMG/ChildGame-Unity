@@ -9,32 +9,29 @@ namespace Game.Dentist
 	{
 		private List<ToothDamage> toothDamages;
 
-		public DenstistMission(DentistTool dentistTool, TeethDamagesContainer teethDamagesContainer)
+		public DenstistMission(DentistTool dentistTool)
 		{
 			dentistTool.CanUse = true;
-
-			if (dentistTool is Brush)
-			{
-				toothDamages = teethDamagesContainer.ToothDamagesContainers.Where(x => x.DirtDamage.Active).Select(x => (ToothDamage)x.DirtDamage).ToList();
-				toothDamages.AddRange(teethDamagesContainer.ToothDamagesContainers.Where(x => x.YellownessDamage.Active).Select(x => (ToothDamage)x.YellownessDamage).ToList());
-
-				necessaryProgress = toothDamages.Count;
-			}
-
-			if (dentistTool is Tweezers)
-			{
-				toothDamages = teethDamagesContainer.FoodScrapsDamage.Select(x => (ToothDamage)x).ToList();
-				necessaryProgress = toothDamages.Count;
-			}
-
-			if (dentistTool is Drill)
-			{
-				toothDamages = teethDamagesContainer.ToothDamagesContainers.Where(x => x.CavitiesDamage.Active).Select(x => (ToothDamage)x.CavitiesDamage).ToList();
-				necessaryProgress = toothDamages.Count;
-			}
-
-			toothDamages?.ForEach(x => x.onActive?.Invoke());
+			toothDamages = dentistTool.GetToothDamages();
+			necessaryProgress = toothDamages.Count;
+			toothDamages?.ForEach(x => x.OnActive?.Invoke());
 		}
+
+		public void GetDamagesToFixByTypeTool(DentistTool dentistTool)
+		{
+			dentistTool.Activate();
+		}
+
+		public DenstistMission(Drill drill, TeethDamagesContainer teethDamagesContainer)
+		{
+			drill.CanUse = true;
+
+			necessaryProgress = toothDamages.Count;
+
+			toothDamages?.ForEach(x => x.OnActive?.Invoke());
+		}
+
+
 
 		public void GetProgress()
 		{

@@ -12,6 +12,8 @@ namespace Game.Dentist.Damage
 		[Header("Other")]
 		[SerializeField] private SpriteRenderer activeRender;
 
+		[Zenject.Inject] private DentistManager dentistManager;
+
 		private List<ToothDamage> toothDamages;
 
 		public CavitiesDamage CavitiesDamage => cavitiesDamage;
@@ -21,18 +23,18 @@ namespace Game.Dentist.Damage
 		private void Awake()
 		{
 			toothDamages = new List<ToothDamage> { cavitiesDamage, yellownessDamage, dirtDamage };
-			TryActive();
 		}
 
-		private void TryActive()
+		public void TryActive()
 		{
 			foreach (var toothDamage in toothDamages)
 			{
 				if (Random.value > .5f)
 				{
 					toothDamage.Cause();
-					toothDamage.onActive += Active;
-					toothDamage.onComplete += Disactive;
+					toothDamage.OnActive += Active;
+					toothDamage.OnComplete += Disactive;
+					toothDamage.OnComplete += CheckTheProgress;
 				}
 			}
 		}
@@ -52,6 +54,11 @@ namespace Game.Dentist.Damage
 			activeRender.gameObject.SetActive(false);
 			activeRender.DOKill();
 			activeRender.color = new Color(activeRender.color.r, activeRender.color.g, activeRender.color.b, 1);
+		}
+
+		private void CheckTheProgress()
+		{
+			dentistManager.OnProgressGetted.Invoke();
 		}
 	}
 }

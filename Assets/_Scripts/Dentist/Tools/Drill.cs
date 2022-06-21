@@ -1,4 +1,6 @@
 ﻿using Game.Dentist.Damage;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Game.Dentist.Tools
@@ -7,13 +9,18 @@ namespace Game.Dentist.Tools
 	{
 		public override void Activate()
 		{
-			//PlaySound();
+			//PlaySound();			
 			SpawnParticles();
 		}
 
 		public override void Stop()
 		{
 			StopParticles();
+		}
+
+		public override List<ToothDamage> GetToothDamages()
+		{
+			return dentistManager.TeethDamagesContainer.ToothDamagesContainers.Where(x => x.CavitiesDamage.Active).Select(x => (ToothDamage)x.CavitiesDamage).ToList();
 		}
 
 		private void Drilling(CavitiesDamage cavitiesDamage)

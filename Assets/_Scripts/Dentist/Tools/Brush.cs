@@ -1,4 +1,6 @@
 ﻿using Game.Dentist.Damage;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Game.Dentist.Tools
@@ -14,6 +16,14 @@ namespace Game.Dentist.Tools
 		public override void Stop()
 		{
 			StopParticles();
+		}
+
+		public override List<ToothDamage> GetToothDamages()
+		{
+			var toothDamages = dentistManager.TeethDamagesContainer.ToothDamagesContainers.Where(x => x.DirtDamage.Active).Select(x => (ToothDamage)x.DirtDamage).ToList();
+			toothDamages.AddRange(dentistManager.TeethDamagesContainer.ToothDamagesContainers.Where(x => x.YellownessDamage.Active).Select(x => (ToothDamage)x.YellownessDamage).ToList());
+
+			return toothDamages;
 		}
 
 		private void Brushing(YellownessDamage yellownessDamage)

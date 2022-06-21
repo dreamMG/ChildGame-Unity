@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine;
 using Game.Dentist.Damage;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Game.Dentist.Tools
 {
@@ -9,7 +11,6 @@ namespace Game.Dentist.Tools
 	{
 		[Header("Tweezers")]
 		[SerializeField] private Transform deckTransform;
-		[SerializeField] private TeethDamagesContainer teethDamagesContainer;
 
 		private Transform takedScrap;
 
@@ -18,14 +19,25 @@ namespace Game.Dentist.Tools
 			deckTransform.DOMove(deckTransform.position + new Vector3(3, 0), .5f);
 		}
 
+		public override List<ToothDamage> GetToothDamages()
+		{
+			return dentistManager.TeethDamagesContainer.FoodScrapsDamage.Select(x => (ToothDamage)x).ToList();
+		}
+
 		public override void Stop()
 		{
 			if (takedScrap == null) return;
 
-			takedScrap.GetComponent<Collider2D>().enabled = false;
+			var foodScrapsDamage = dentistManager.TeethDamagesContainer.FoodScrapsDamage.Find(x => x.ScrapsTransform == takedScrap);
+
+			if (foodScrapsDamage != null)
+			{
+				foodScrapsDamage.Complete();
+			}
+
 			takedScrap.SetParent(deckTransform);
 			takedScrap.localPosition = Vector3.zero;
-			teethDamagesContainer.FoodScrapsDamage.Find(x => x.ScrapsTransform == takedScrap).Active = false;
+			dentistManager.TeethDamagesContainer.FoodScrapsDamage.Find(x => x.ScrapsTransform == takedScrap).Active = false;
 			takedScrap = null;
 
 			BackToStartPos();

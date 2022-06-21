@@ -1,4 +1,5 @@
 using Game.Input;
+using Game.UI;
 using UnityEngine;
 using Zenject;
 
@@ -12,12 +13,15 @@ namespace Game.Backend
 		[SerializeField] private AudioSource audioEffect;
 		[Header("Cameras")]
 		[SerializeField] private CamerasManager camerasManager;
+		[Header("UI")]
+		[SerializeField] private FinishPanel finishPanel;
 
 		public override void InstallBindings()
 		{
 			InstallInput();
 			InstallAudio();
 			InstallCameras();
+			InstallUI();
 		}
 
 		private void InstallInput()
@@ -34,6 +38,11 @@ namespace Game.Backend
 		private void InstallCameras()
 		{
 			Container.Bind<CamerasManager>().FromInstance(camerasManager).AsSingle();
+		}
+
+		private void InstallUI()
+		{
+			Container.Bind<FinishPanelController>().AsSingle().WithArguments(finishPanel);
 		}
 	}
 }
